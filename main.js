@@ -1,10 +1,12 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, screen } = require('electron');
 const path = require('path');
 
 function createWindow () {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width,
+    height,
+    icon: './assets/ico/logo.png',
     webPreferences: {
       nodeIntegration: true, // use or not Node in front
       contextIsolation: false
