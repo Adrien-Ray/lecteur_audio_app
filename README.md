@@ -13,4 +13,8 @@ npm run build
 electron-builder --linux
 electron-builder --win
 electron-builder --mac
+
+sudo snap install --dangerous ./dist/lecteur-audio-xxx.snap
+
+sudo snap remove lecteur-audio-app
 ```
