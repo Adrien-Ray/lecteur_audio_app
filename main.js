@@ -1,4 +1,10 @@
-const { app, BrowserWindow, screen } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  screen,
+  ipcMain,
+  dialog
+} = require('electron');
 const path = require('path');
 
 function createWindow () {
@@ -6,10 +12,13 @@ function createWindow () {
   const win = new BrowserWindow({
     width,
     height,
-    icon: './assets/ico/logo.png',
+    // icon: './assets/ico/logo.png',
+    icon: path.join(__dirname, 'assets/ico/logo.png'),
     webPreferences: {
-      nodeIntegration: true, // use or not Node in front
-      contextIsolation: false
+      // preload: './preload.js',
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false, // use or not Node in front
+      contextIsolation: true
     }
   });
 
@@ -18,3 +27,10 @@ function createWindow () {
 }
 
 app.whenReady().then(createWindow);
+
+ipcMain.handle('dialog:openFiles', async () => {
+  const result = await dialog.showOpenDialog({
+    properties: ['openFile', 'multiSelections']
+  });
+  return result.filePaths;
+});

@@ -1,53 +1,43 @@
 import { constructList } from "./scripts/constructList.js";
 import { menuSpecial } from "./scripts/menuSpecial.js";
-import { newCall } from "./scripts/newCall.js";
+import { lecteurEnded } from "./scripts/lecteurEnded.js";
+import { getListFilesInLocalStorage } from "./scripts/getListFilesInLocalStorage.js";
 
-function lecteurEnded() {
-    // console.log('in lecteurEnded');
-    
-    // listen ended
-    document.getElementById('lecteur').addEventListener('ended',() => {
-        // console.log('in lecteurEnded listener scope');
-        
-        // check special bool bool
-        var isRandomMode = document.querySelector('#randomMode.randomModeActive');
-        var isMultiPistMode = document.querySelector('#multiPistMode.multiPistModeActive');
-        if (!isRandomMode && !isMultiPistMode) {
-            // if false false -> loop true
-            document.getElementById('lecteur').loop = true;
-        } else {
-            // else  loop false
-            document.getElementById('lecteur').loop = false;
-            let itemDOMcssSelector;
-            //       if *** true -> crée liste restreinte
-            if (isMultiPistMode) {
-                itemDOMcssSelector = 'ul#listFiles > li > span.multiPistModeCheck';
-                //           if false true -> nextCall()
-                if (!isRandomMode && isMultiPistMode) {
-                    newCall(itemDOMcssSelector,false);
-                }
-                //           if true true -> randomCall()
-                if (isRandomMode && isMultiPistMode) {
-                    newCall(itemDOMcssSelector,true);
-                }
-                
+/*const { dialog } = require('electron');
+const fs = require('fs');*/
+
+function addFileListener() {
+    document.getElementById('addFileButton').addEventListener('click', async () => {
+        const files = await window.electronAPI.openFiles();
+        console.log('Fichiers sélectionnés :', files);
+        let initialListFiles = getListFilesInLocalStorage();
+        let newInListFiles = []
+        files.forEach(filePath => {
+            if (filePath.endsWith('.mp3')) {
+                newInListFiles.push({
+                    path: filePath.substring(0, filePath.lastIndexOf('/')),
+                    name: filePath.substring(filePath.lastIndexOf('/') + 1),
+                    uuid: `${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}-${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}-${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}-${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}-${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}`
+                })
+            } else {
+                console.error(`${filePath} n'est pas un mp3`)
             }
-            if (isRandomMode && !isMultiPistMode) {
-                itemDOMcssSelector = 'ul#listFiles > li > span';
-                //       if true false -> randomCall() (sans list restreinte)
-                    newCall(itemDOMcssSelector,true);
-                
-            }
-            
-        }
+        });
+        constructList(newInListFiles);
+        newInListFiles.forEach(element => {
+            initialListFiles.push(element);
+        });
+        localStorage.setItem('listFiles', JSON.stringify(initialListFiles));
+        // location.reload();
     });
 }
 
-fetch('./assets/data.json')
-  .then(response => response.json())
-  .then(data => {
-    const listFiles = data.data;
-    constructList(listFiles, data.folderMusic);
-    menuSpecial();
-    lecteurEnded();
-  });
+let listFiles = getListFilesInLocalStorage();
+console.log('listFiles', listFiles);
+
+constructList(listFiles);
+menuSpecial();
+lecteurEnded();
+addFileListener();
+
+
