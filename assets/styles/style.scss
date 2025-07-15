@@ -40,19 +40,19 @@ ul li span.current {
     background-size: 85vh;
     }
     37% {
-    background-size: 90vh;
+    background-size: 100vh;
     }
     38% {
     background-size: 85vh;
     }
 
-    40% {
+    39% {
     background-size: 85vh;
     }
-    41% {
+    40% {
     background-size: 90vh;
     }
-    42% {
+    41% {
     background-size: 85vh;
     }
 
@@ -87,11 +87,24 @@ body {
         width: 100%;
     }
 
-    button.buttonSpecial {
+    button.buttonSpecial,
+    button.buttonModifList {
         padding: 0;
         cursor: pointer;
         img {
             width: 3.5em;
+            aspect-ratio: 1/1;
+        }
+    }
+    button.deleteOneFile {
+        padding: 0;
+        margin: 0 0 0 1em;
+        cursor: pointer;
+        display: inline;
+        img {
+            margin: 0;
+            padding: 0;
+            width: 1.5em;
             aspect-ratio: 1/1;
         }
     }
@@ -104,11 +117,11 @@ body {
 .content>section {
     padding: 1em;
 
-    &:nth-child(odd) {
+    &:nth-child(even) {
         background-color: var(--main_bg_alpha);
     }
 
-    &:nth-child(even) {
+    &:nth-child(odd) {
         background-color: var(--second_bg_alpha);
     }
 }
