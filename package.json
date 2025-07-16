@@ -14,5 +14,24 @@
   "devDependencies": {
     "electron": "^37.2.1",
     "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "lecteur-audio-app",
+    "productName": "lecteur-audio-app",
+    "files": [
+      "dist/",
+      "main.js",
+      "preload.js",
+      "index.html",
+      "assets/"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "icon": "assets/ico/logo512.png",
+    "linux": {
+      "target": ["AppImage", "snap", "deb"],
+      "icon": "assets/ico/logo512.png"
+    }
   }
 }
