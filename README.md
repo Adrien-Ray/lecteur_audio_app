@@ -18,3 +18,13 @@ sudo snap install --dangerous ./dist/lecteur-audio-xxx.snap
 
 sudo snap remove lecteur-audio-app
 ```
+
+## expérimental (get /media/)
+
+```sh
+# démarrer dev pour get les bons paths
+GTK_USE_PORTAL=0 npm start
+
+# en téorie (mais lock par système)
+sudo snap install --dangerous --classic ./myapp_amd64.snap
+```
