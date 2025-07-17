@@ -7,9 +7,36 @@ npm install
 
 # mode dev
 npm start
-# mode build
+# mode dev avec external storage path
+GTK_USE_PORTAL=0 npm start
+# mode build - snap, deb et AppImage
 npm run build
-# le build apparait dans le dossier /dist/
+```
+
+## .deb RECOMMENDED
+
+```sh
+# build
+npx electron-builder --linux deb
+# install
+sudo dpkg -i mon_app.deb
+# éventuellement : installer les dépendances : 
+sudo apt-get install -f
+
+# désinstallation complète
+sudo apt remove lecteur-audio-app
+sudo apt purge mon_app
+sudo apt autoremove
+rm -rf ~/.config/lecteur-audio-app
+```
+
+## .snap NOT RECOMMENDED
+
+
+```sh
+# build
+npx electron-builder --linux snap
+# le build apparaît dans le dossier /dist/
 electron-builder --linux
 electron-builder --win
 electron-builder --mac
