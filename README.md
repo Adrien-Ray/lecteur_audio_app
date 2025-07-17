@@ -7,6 +7,8 @@ npm install
 
 # mode dev
 npm start
+# mode dev avec external storage path
+GTK_USE_PORTAL=0 npm start
 # mode build - snap, deb et AppImage
 npm run build
 ```
