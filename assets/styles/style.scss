@@ -88,7 +88,8 @@ body {
     }
 
     button.buttonSpecial,
-    button.buttonModifList {
+    button.buttonModifList,
+    button.buttonModifListOptions {
         padding: 0;
         cursor: pointer;
         img {
@@ -130,5 +131,17 @@ body {
 ul li span:hover:not(.current) {
     background-color: var(--pre_active);
 }
+
+#multiPistMode_options {
+    display: none;
+    &.display {
+        display: block;
+    }
+}
+
+.multiPistMode_options {
+    margin-top: 0.3em;
+}
+
 
 /* END SPECIFIC STYLE */
