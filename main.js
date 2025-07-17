@@ -3,9 +3,12 @@ const {
   BrowserWindow,
   screen,
   ipcMain,
-  dialog
+  dialog,
+  Notification
 } = require('electron');
 const path = require('path');
+
+// process.env.GTK_USE_PORTAL = '0';
 
 function createWindow () {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
@@ -36,3 +39,7 @@ ipcMain.handle('dialog:openFiles', async () => {
   });
   return result.filePaths;
 });
+
+
+
+
