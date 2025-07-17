@@ -1,5 +1,15 @@
 {
   "name": "lecteur-audio-app",
+  "email": "barney@npmjs.com",
+  "url": "http://barnyrubble.npmjs.com/",
+  "author": {
+    "name": "me",
+    "email": "xxx@xxx.xxx"
+  },
+  "bugs": {
+    "url": "https://github.com/npm/example/issues",
+    "email": "xxx@xxx.xxx"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -9,7 +19,6 @@
     "build": "electron-builder"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^37.2.1",
@@ -30,7 +39,11 @@
     },
     "icon": "assets/ico/logo512.png",
     "linux": {
-      "target": ["AppImage", "snap", "deb"],
+      "target": [
+        "AppImage",
+        "snap",
+        "deb"
+      ],
       "icon": "assets/ico/logo512.png"
     }
   }
