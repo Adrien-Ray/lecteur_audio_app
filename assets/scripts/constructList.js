@@ -5,16 +5,14 @@ export function constructList(listFiles) {
         const dir = listFiles[i].path;
         const uuid = listFiles[i].uuid;
         
-        //let liDom = `<li id="li_element_${uuid}"><input class="multiPistModeCheckbox" type="checkbox" onclick="document.getElementById('element_${uuid}').classList.toggle('multiPistModeCheck');"><span id="element_${uuid}" data-object='{"file":"${file}","dir":"${dir}"}' onclick="clickItem('${dir}/${file}', 'element_${uuid}');">${dir}/<b>${file}</b></span><button onclick="deleteOneFile('${uuid}')"><img src="./assets/ico/delete.svg" alt="delete file"></button></li>`;
-        //contentUl = contentUl+liDom;
-
         let liDOM = document.createElement('li');
         liDOM.id = `li_element_${uuid}`;
 
         let liDOM_checkbox = document.createElement('input');
         liDOM_checkbox.setAttribute("class", `multiPistModeCheckbox`);
+        liDOM_checkbox.id = `checkbox_${uuid}`;
         liDOM_checkbox.type = 'checkbox';
-        liDOM_checkbox.setAttribute("onclick",`document.getElementById('element_${uuid}').classList.toggle('multiPistModeCheck');`);
+        // liDOM_checkbox.setAttribute("onclick",`document.getElementById('element_${uuid}').classList.toggle('multiPistModeCheck');`);
         liDOM.appendChild(liDOM_checkbox);
 
         let liDOM_span = document.createElement('span');
