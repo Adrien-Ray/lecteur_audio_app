@@ -19,7 +19,7 @@ export function lecteurEnded() {
             let itemDOMcssSelector;
             //       if *** true -> crée liste restreinte
             if (isMultiPistMode) {
-                itemDOMcssSelector = 'ul#listFiles > li > span.multiPistModeCheck';
+                itemDOMcssSelector = true;
                 //           if false true -> nextCall()
                 if (!isRandomMode && isMultiPistMode) {
                     newCall(itemDOMcssSelector,false);
@@ -31,7 +31,7 @@ export function lecteurEnded() {
                 
             }
             if (isRandomMode && !isMultiPistMode) {
-                itemDOMcssSelector = 'ul#listFiles > li > span';
+                itemDOMcssSelector = false;
                 //       if true false -> randomCall() (sans list restreinte)
                     newCall(itemDOMcssSelector,true);
                 
