@@ -1,8 +1,16 @@
+function cleanUrl(string) {
+    string = string.replace("'","\\\'");
+    string = string.replace("#","%23");
+    return string;
+}
+
 export function constructList(listFiles) {
     let contentUl = '';
     for (let i = 0; i < listFiles.length; i++) {
-        const file = listFiles[i].name;
-        const dir = listFiles[i].path;
+        let file = listFiles[i].name;
+        let fileClean = cleanUrl(file);
+        let dir = listFiles[i].path;
+        let dirClean = cleanUrl(dir);
         const uuid = listFiles[i].uuid;
         
         let liDOM = document.createElement('li');
@@ -12,12 +20,11 @@ export function constructList(listFiles) {
         liDOM_checkbox.setAttribute("class", `multiPistModeCheckbox`);
         liDOM_checkbox.id = `checkbox_${uuid}`;
         liDOM_checkbox.type = 'checkbox';
-        // liDOM_checkbox.setAttribute("onclick",`document.getElementById('element_${uuid}').classList.toggle('multiPistModeCheck');`);
         liDOM.appendChild(liDOM_checkbox);
 
         let liDOM_span = document.createElement('span');
         liDOM_span.id = `element_${uuid}`;
-        liDOM_span.setAttribute("onclick",`clickItem('${dir.replace("'","\\\'")}/${file.replace("'","\\\'")}', 'element_${uuid}')`);
+        liDOM_span.setAttribute("onclick",`clickItem('${dirClean}/${fileClean}', 'element_${uuid}')`);
         liDOM_span.appendChild(document.createTextNode(`${dir}/`));
 
         let liDOM_span_b = document.createElement('b');
@@ -37,7 +44,6 @@ export function constructList(listFiles) {
         liDOM_delete.appendChild(liDOM_delete_img);
         liDOM.appendChild(liDOM_delete);
 
-    }    
-    //document.getElementById('listFiles').innerHTML = document.getElementById('listFiles').innerHTML + contentUl;
+    }
     return;
 }
