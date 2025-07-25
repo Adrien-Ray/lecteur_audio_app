@@ -33,5 +33,16 @@ export function menuSpecial() {
         document.getElementById('multiPistMode_options_selectNone').addEventListener('click', () => {
             allStateOfCheckboxes(false);
         })
+        document.getElementById('listProfile_select').addEventListener('change', () => {
+            if (document.getElementById('listProfile_select').value) {
+                // display save and delete button
+                document.getElementById('listProfile_save').classList.add('displayInlineBlock');
+                document.getElementById('listProfile_delete').classList.add('displayInlineBlock');
+            } else {
+                // hide save and delete button
+                document.getElementById('listProfile_save').classList.remove('displayInlineBlock');
+                document.getElementById('listProfile_delete').classList.remove('displayInlineBlock');
+            }
+        })
     });
 }
