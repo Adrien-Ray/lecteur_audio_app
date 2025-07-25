@@ -5,6 +5,7 @@
     --active_color: rgba(255, 0, 0, 0.5);
     --pre_active: rgba(255, 0, 0, 0.1);
     --mainFont: 1.1em sans-serif;
+    --buttonsHeight: 3.5em;
 }
 
 /* FUNCTIONAL STYLE */
@@ -93,9 +94,17 @@ body {
         padding: 0;
         cursor: pointer;
         img {
-            width: 3.5em;
+            width: var(--buttonsHeight);
             aspect-ratio: 1/1;
         }
+    }
+    select.buttonModifListOptions {
+        height: calc(var(--buttonsHeight) + 0.5em);
+        width: calc(var(--buttonsHeight) * 3);
+        position: relative;
+        bottom: 1.3em;
+        cursor: pointer;
+        
     }
     button.deleteOneFile {
         padding: 0;
@@ -135,10 +144,15 @@ ul li span:hover:not(.current) {
     background-color: var(--pre_active);
 }
 
-#multiPistMode_options {
+#multiPistMode_options,
+#listProfile_save,
+#listProfile_delete {
     display: none;
     &.display {
         display: block;
+    }
+    &.displayInlineBlock {
+        display: inline-block;
     }
 }
 
