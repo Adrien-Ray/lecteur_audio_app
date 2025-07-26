@@ -3,12 +3,10 @@ export function newCall(
     isRandomMode = false
 ) {
     let liDOM = document.querySelectorAll('#listFiles > li'); // return nodeList checkboxes
-    console.log('liDOM',liDOM);
     let liIndexTrigger = [];
     let actualIndex = false;
     for (let i = 0; i < liDOM.length; i++) {
         const liDOMelement = liDOM[i];
-        console.log(liDOMelement);
         if (liDOMelement.childNodes[1].classList.contains('current')) {
             actualIndex = i;
         }

@@ -22,6 +22,7 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false, // use or not Node in front
       contextIsolation: true
+      // enableRemoteModule: true
     }
   });
 
@@ -39,6 +40,10 @@ ipcMain.handle('dialog:openFiles', async () => {
   });
   return result.filePaths;
 });
+
+
+
+
 
 
 
