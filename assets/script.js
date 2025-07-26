@@ -11,5 +11,3 @@ constructListProfiles(getListProfileInLocalStorage());
 menuSpecial();
 lecteurEnded();
 addFileListener();
-
-

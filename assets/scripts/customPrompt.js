@@ -24,8 +24,12 @@ export function customPrompt(question) {
     };
     window.addEventListener('keydown', (event) => {
         if (event.key === "Escape") {
+          try {
             document.body.removeChild(modal);
             resolve(null);
+          } catch (error) {
+            
+          }
         }
     })
   });

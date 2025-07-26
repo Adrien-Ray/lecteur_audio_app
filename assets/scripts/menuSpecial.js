@@ -52,7 +52,6 @@ export function menuSpecial() {
     })
     document.getElementById('listProfile_add').addEventListener('click', () => {
         customPrompt("saisissez le nom du nouveau profile de sélection").then(result => {
-            // console.log("Utilisateur a saisi :", result);
             if (result && result != '') {
                 const newUuid = generateUuid();
                 const newProfileObj = {
@@ -65,13 +64,20 @@ export function menuSpecial() {
                 listProfile.push(newProfileObj);
                 localStorage.setItem('listProfile',JSON.stringify(listProfile));
                 // add in DOM
-                /* let newOptionDOM = document.createElement('option');
-                newOptionDOM.id = `option_${newUuid}`;
-                newOptionDOM.value = `${newUuid}`;
-                newOptionDOM.innerText = result;
-                document.querySelector('#listProfile_select').appendChild(newOptionDOM); */
                 constructListProfiles([newProfileObj]);
             }
         });
     });
+    document.getElementById('listProfile_delete').addEventListener('click', () => {
+        let idCurrectProfile = document.querySelector('#listProfile_select').value;        
+        let initProfileArray = getListProfileInLocalStorage();
+        let objOfCurrentProfile = initProfileArray.find((element) => element.uuid === idCurrectProfile);
+        let confirmDeleteProfile = confirm(`êtes vous sûre de vouloir supprimer le profile ${objOfCurrentProfile.label} ?`);
+        if (confirmDeleteProfile) {
+            let newProfileArray = initProfileArray.filter((element) => element.uuid !== idCurrectProfile);
+            // destruction DOM et localStorage
+            localStorage.setItem('listProfile',JSON.stringify(newProfileArray));
+            document.getElementById(`option_${idCurrectProfile}`).remove();
+        }
+    })
 }
