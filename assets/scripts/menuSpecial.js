@@ -2,12 +2,20 @@ import { generateUuid } from "./generateUuid.js";
 import { customPrompt } from "./customPrompt.js";
 import { getListProfileInLocalStorage } from "./getListProfileInLocalStorage.js";
 import { constructListProfiles } from "./constructListProfiles.js";
+import { saveListProfile } from "./saveListProfile.js";
+
 
 function allStateOfCheckboxes(bool = false) {
     document.querySelectorAll('#listFiles li input[type="checkbox"].multiPistModeCheckbox').forEach(element => {
         element.checked = bool;
     });
 };
+
+/* function setDomProfile(profileUuid) {
+    let objProfileName = getListProfileInLocalStorage().find((element) => element.uuid === profileUuid);
+} */
+
+
 
 export function menuSpecial() {    
     // listen click on nodeList special
@@ -65,6 +73,8 @@ export function menuSpecial() {
                 localStorage.setItem('listProfile',JSON.stringify(listProfile));
                 // add in DOM
                 constructListProfiles([newProfileObj]);
+                document.getElementById('listProfile_select').value = newUuid;
+                saveListProfile();
             }
         });
     });
@@ -79,5 +89,8 @@ export function menuSpecial() {
             localStorage.setItem('listProfile',JSON.stringify(newProfileArray));
             document.getElementById(`option_${idCurrectProfile}`).remove();
         }
+    });
+    document.getElementById('listProfile_save').addEventListener('click', () => {
+        saveListProfile();
     })
 }
