@@ -1,11 +1,10 @@
 function cleanUrl(string) {
-    string = string.replace("'","\\\'");
+    string = string.replace("'","\\'");
     string = string.replace("#","%23");
     return string;
 }
 
 export function constructList(listFiles) {
-    let contentUl = '';
     for (let i = 0; i < listFiles.length; i++) {
         let file = listFiles[i].name;
         let fileClean = cleanUrl(file);
