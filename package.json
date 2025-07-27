@@ -10,7 +10,7 @@
     "url": "https://github.com/npm/example/issues",
     "email": "xxx@xxx.xxx"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "main.js",
   "scripts": {
