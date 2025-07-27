@@ -211,4 +211,27 @@ ul li span:hover:not(.current) {
     }
 }
 
+#listFiles {
+    padding-left: 0.4em;
+    li {
+        list-style-type: none;
+        padding: 0 ;
+        position: relative;
+        &:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        input {
+            width: 1.6em;
+            height: 1.6em;
+            position: absolute;
+            //left: -2.5em;
+            top: 0.05em;
+        }
+        span {
+            margin-left: 1.9em;
+        }
+
+    }
+}
+
 /* END SPECIFIC STYLE */
