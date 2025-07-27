@@ -28,7 +28,7 @@ export function customPrompt(question) {
             document.body.removeChild(modal);
             resolve(null);
           } catch (error) {
-            
+            console.info(error)
           }
         }
     })

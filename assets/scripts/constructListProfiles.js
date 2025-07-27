@@ -1,4 +1,3 @@
-import { generateUuid } from "./generateUuid.js";
 export function constructListProfiles(listProfiles) {
     listProfiles.forEach(profile => {
         let newOptionDOM = document.createElement('option');

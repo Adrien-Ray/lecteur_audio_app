@@ -3,8 +3,8 @@ const {
   BrowserWindow,
   screen,
   ipcMain,
-  dialog,
-  Notification
+  dialog
+  // Notification
 } = require('electron');
 const path = require('path');
 
@@ -40,7 +40,6 @@ ipcMain.handle('dialog:openFiles', async () => {
   });
   return result.filePaths;
 });
-
 
 
 
