@@ -11,9 +11,12 @@ function allStateOfCheckboxes(bool = false) {
     });
 };
 
-/* function setDomProfile(profileUuid) {
-    let objProfileName = getListProfileInLocalStorage().find((element) => element.uuid === profileUuid);
-} */
+function setDomProfile() {
+    let objProfile = getListProfileInLocalStorage().find((element) => element.uuid === document.getElementById('listProfile_select').value);
+    objProfile.listFilesUuidList.forEach(fileUuid => {
+        document.getElementById(`checkbox_${fileUuid}`).checked = true;
+    });
+}
 
 
 
@@ -52,6 +55,9 @@ export function menuSpecial() {
             // display save and delete button
             document.getElementById('listProfile_save').classList.add('displayInlineBlock');
             document.getElementById('listProfile_delete').classList.add('displayInlineBlock');
+            // set checkboxes status
+            allStateOfCheckboxes(false);
+            setDomProfile();
         } else {
             // hide save and delete button
             document.getElementById('listProfile_save').classList.remove('displayInlineBlock');
