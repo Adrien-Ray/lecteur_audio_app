@@ -98,5 +98,9 @@ export function menuSpecial() {
     });
     document.getElementById('listProfile_save').addEventListener('click', () => {
         saveListProfile();
+        document.querySelector('#listProfile_save img').classList.add('greenAnimate');
+        setTimeout(() => {
+            document.querySelector('#listProfile_save img').classList.remove('greenAnimate');
+        }, 1200);
     })
 }

@@ -1,7 +1,7 @@
 :root {
     --main_bg: #f7ecdb;
-    --main_bg_alpha: rgba(247, 236, 219, 0.98);
-    --second_bg_alpha: rgba(115, 250, 255, 0.85);
+    --main_bg_alpha: rgba(247, 236, 219, 0.92);
+    --second_bg_alpha: rgba(115, 250, 255, 0.87);
     --active_color: rgba(255, 0, 0, 0.5);
     --pre_active: rgba(255, 0, 0, 0.1);
     --mainFont: 1.1em sans-serif;
@@ -41,7 +41,7 @@ ul li span.current {
     background-size: 85vh;
     }
     37% {
-    background-size: 100vh;
+    background-size: 90vh;
     }
     38% {
     background-size: 85vh;
@@ -51,7 +51,7 @@ ul li span.current {
     background-size: 85vh;
     }
     40% {
-    background-size: 90vh;
+    background-size: 87.5vh;
     }
     41% {
     background-size: 85vh;
@@ -59,6 +59,18 @@ ul li span.current {
 
     100% {
     background-size: 85vh;
+    }
+}
+
+@keyframes greenAnimate {
+    0% {
+        background-color: rgb(211, 211, 211);
+    }
+    80% {
+        background-color: green;
+    }
+    100% {
+        background-color: rgb(211, 211, 211);
     }
 }
 
@@ -128,14 +140,26 @@ body {
 /* SPECIFIC STYLE */
 
 .content>section {
-    padding: 1em;
-
+    padding: 0 1em 1em 1em;
+    h2 {
+        margin: 0 0 .5em 0;
+        padding: 0;
+        text-transform: uppercase;
+        line-height: 70%;
+        font-size: xx-large;
+        text-shadow: 0px 1px 3px black;
+    }
     &:nth-child(even) {
         background-color: var(--main_bg_alpha);
+        h2 {
+            color: var(--second_bg_alpha);
+        }
     }
-
     &:nth-child(odd) {
         background-color: var(--second_bg_alpha);
+        h2 {
+            color: var(--main_bg_alpha);
+        }
     }
 }
 
@@ -154,7 +178,13 @@ ul li span:hover:not(.current) {
     &.displayInlineBlock {
         display: inline-block;
     }
+    .greenAnimate {
+        animation-name: greenAnimate;
+        animation-duration: 0.5s;
+        animation-iteration-count: 1;
+    }
 }
+
 
 .multiPistMode_options {
     margin-top: 0.3em;
@@ -178,6 +208,29 @@ ul li span:hover:not(.current) {
         border: 3px solid black;
         padding: calc(var(--buttonsHeight) / 2);
         background-color: white;
+    }
+}
+
+#listFiles {
+    padding-left: 0.4em;
+    li {
+        list-style-type: none;
+        padding: 0 ;
+        position: relative;
+        &:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        input {
+            width: 1.6em;
+            height: 1.6em;
+            position: absolute;
+            //left: -2.5em;
+            top: 0.05em;
+        }
+        span {
+            margin-left: 1.9em;
+        }
+
     }
 }
 
