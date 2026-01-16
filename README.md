@@ -25,7 +25,7 @@ sudo apt-get install -f
 
 # désinstallation complète
 sudo apt remove lecteur-audio-app
-sudo apt purge mon_app
+sudo apt purge lecteur-audio-app
 sudo apt autoremove
 rm -rf ~/.config/lecteur-audio-app
 ```

@@ -17,6 +17,7 @@ function createWindow () {
     height,
     // icon: './assets/ico/logo.png',
     icon: path.join(__dirname, 'assets/ico/logo.png'),
+    autoHideMenuBar: true,
     webPreferences: {
       // preload: './preload.js',
       preload: path.join(__dirname, 'preload.js'),

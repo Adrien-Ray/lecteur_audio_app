@@ -1,2 +1,2 @@
-confinement: classic
+confinement: strict
 grade: stable
