@@ -1,6 +1,8 @@
 :root {
-    --main_bg: #f7ecdb;
-    --main_bg_alpha: rgba(247, 236, 219, 0.92);
+    // --main_bg: #f7ecdb;
+    --main_bg: rgb(255, 255, 255);
+    // --main_bg_alpha: rgba(247, 236, 219, 0.92);
+    --main_bg_alpha: rgba(255, 255, 255, 0.95);
     --second_bg_alpha: rgba(115, 250, 255, 0.87);
     --active_color: rgba(255, 0, 0, 0.5);
     --pre_active: rgba(255, 0, 0, 0.1);
@@ -31,7 +33,7 @@ ul li span.current {
 /* END FUNCTIONAL STYLE */
 
 /* GENERIC STYLE */
-
+/*
 @keyframes bgAnimation {
     0% {
     background-size: 85vh;
@@ -73,20 +75,22 @@ ul li span.current {
         background-color: rgb(211, 211, 211);
     }
 }
-
+*/
 body {
     background-color: var(--main_bg);
-    background-image: url(../ico/logoAlpha.png);
+    /*background-image: url(../ico/logoAlpha.png);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    background-size: 85vh;
+    background-size: 85vh;*/
     font: var(--mainFont);
     margin: 0;
     animation-name: bgAnimation;
     animation-fill-mode: both;
     animation-duration: 5s;
     animation-iteration-count: infinite;
+    height: 100vh;
+    max-height: 100vh;
     .bgfilter {
         position: fixed;
         width: 100vw;
@@ -94,6 +98,17 @@ body {
         /* background-color: var(--main_bg_alpha); */
         z-index: -999;
         backdrop-filter: saturate(50%);
+    }
+
+    .content {
+        height: 100vh;
+        max-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        &>section:last-child {
+            flex: 2;
+            overflow-y: scroll;
+        }
     }
 
     audio {
@@ -140,7 +155,7 @@ body {
 /* SPECIFIC STYLE */
 
 .content>section {
-    padding: 0 1em 1em 1em;
+    padding: .7em;
     h2 {
         margin: 0 0 .5em 0;
         padding: 0;
@@ -149,13 +164,13 @@ body {
         font-size: xx-large;
         text-shadow: 0px 1px 3px black;
     }
-    &:nth-child(even) {
-        background-color: var(--main_bg_alpha);
+    &:nth-child(odd) {
+        // background-color: var(--main_bg_alpha);
         h2 {
             color: var(--second_bg_alpha);
         }
     }
-    &:nth-child(odd) {
+    &:nth-child(even) {
         background-color: var(--second_bg_alpha);
         h2 {
             color: var(--main_bg_alpha);
@@ -213,13 +228,17 @@ ul li span:hover:not(.current) {
 
 #listFiles {
     padding-left: 0.4em;
+    max-height: fit-content;
     li {
         list-style-type: none;
         padding: 0 ;
         position: relative;
-        &:nth-child(odd) {
-            background-color: rgba(0, 0, 0, 0.05);
+        &:not(:first-child) {
+            border-top: 1px solid rgba(200, 200, 200, 1);
         }
+        /*&:nth-child(odd) {
+            // background-color: rgba(230, 230, 230, 1);
+        }*/
         input {
             width: 1.6em;
             height: 1.6em;

@@ -12,12 +12,8 @@
     <div class="bgfilter"></div>
     <div class="content">
         <section>
-            <h2>modifier la liste de lecture</h2>
             <button class="buttonModifList" id="addFileButton" title="ajouter des pistes audio"><img src="./assets/ico/add.svg" alt="ajouter des pistes audio"></button>
             <button class="buttonModifList" id="deleteAllFiles" onclick="deleteAllFiles();" title="supprimer toutes les pistes"><img src="./assets/ico/delete.svg" alt="supprimer toutes les pistes"></button>
-        </section>
-        <section>
-            <h2>menu modes de lectures</h2>
             <button class="buttonSpecial" id="randomMode" title="mode random"><img src="./assets/ico/shuffle.svg" alt="mode random"></button>
             <button class="buttonSpecial" id="multiPistMode" title="sélection multi-pistes"><img src="./assets/ico/checklist.svg" alt="mode multi-pistes"></button>
             <div id="multiPistMode_options" class="multiPistMode_options">
@@ -32,12 +28,9 @@
             </div>
         </section>
         <section>
-            <h2>lecteur</h2>
-            <p id="label_lecteur"></p>
             <audio autoplay loop controls src="" id="lecteur"></audio>
         </section>
         <section>
-            <h2>list files</h2>
             <ul id="listFiles"></ul>
         </section>
     </div>
