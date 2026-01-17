@@ -28,6 +28,7 @@
             </div>
         </section>
         <section>
+            <p id="label_lecteur"></p>
             <audio autoplay loop controls src="" id="lecteur"></audio>
         </section>
         <section>
@@ -40,7 +41,7 @@
     <script>
         function clickItem(path, id) {    
             document.querySelector('audio').src = path;
-            document.getElementById('label_lecteur').innerTEXT = path;
+            document.getElementById('label_lecteur').innerHTML = path;
             const elementCurrent = document.querySelectorAll('ul li span.current');
             elementCurrent.forEach(element => {
                 element.classList.toggle('current');
