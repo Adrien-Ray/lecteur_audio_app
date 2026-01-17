@@ -231,25 +231,25 @@ ul li span:hover:not(.current) {
     max-height: fit-content;
     li {
         list-style-type: none;
-        padding: 0 ;
+        padding: 1px 0;
         position: relative;
         &:not(:first-child) {
             border-top: 1px solid rgba(200, 200, 200, 1);
         }
-        /*&:nth-child(odd) {
-            // background-color: rgba(230, 230, 230, 1);
-        }*/
         input {
             width: 1.6em;
             height: 1.6em;
             position: absolute;
-            //left: -2.5em;
             top: 0.05em;
         }
         span {
-            margin-left: 1.9em;
+            display: inline-block;
+            margin: 0 1.9em;
         }
-
+        button.deleteOneFile {
+            position: absolute;
+            right: 0;
+        }
     }
 }
 
